@@ -2,6 +2,7 @@
 
 class Maze;
 class MazeFactory;
+class TrappedMazeFactory;
 class MazeBuilder;
 class Room;
 class Wall;
@@ -14,6 +15,9 @@ public:
     virtual ~MazeGame();
 
     Maze* CreateMaze();
+
+    //for Trapped Maze 
+    Maze* CreateMazeUsingTraps();
 
     //for Abstract Factory pattern
     Maze* CreateMaze(MazeFactory& factory);

@@ -4,17 +4,30 @@
 
 #include <iostream>
 
-#include "BombedMazeFactory.h"
 #include "MazeGame.h"
+#include "BombedMazeGame.h"
+#include "TrappedMazeGame.h"
 #include "StandardMazeBuilder.h"
 #include "CountingMazeBuilder.h"
 #include "MazePrototypeFactory.h"
+#include "BombedMazeFactory.h"
 #include "Maze.h"
 #include "Wall.h"
 #include "Room.h"
 #include "Door.h"
+#include "Bomb.h"
+#include "Trap.h"
 
 using namespace std;
+
+void TrappedMazGameTest()
+{
+    TrappedMazeGame game;
+    Maze* maze = game.CreateMazeUsingTraps();
+
+    //clean up
+    delete maze;
+}
 
 void AbstractFactoryTest()
 {
@@ -68,10 +81,11 @@ void PrototypeTest ()
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-    AbstractFactoryTest();
-    StandardMazeBuilderTest();
-    CountingMazeBuilderTest();
-    PrototypeTest();
+    TrappedMazGameTest();
+    //AbstractFactoryTest();
+    //StandardMazeBuilderTest();
+    //CountingMazeBuilderTest();
+    //PrototypeTest();
 
 	return 0;
 }

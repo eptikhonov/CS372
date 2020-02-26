@@ -1,22 +1,2 @@
-﻿  stdafx.cpp
-  BombedMazeFactory.cpp
-  BombedMazeGame.cpp
-  BombedWall.cpp
-  CountingMazeBuilder.cpp
-  Door.cpp
-  DoorNeedingSpell.cpp
-  EnchantedMazeFactory.cpp
-  EnchantedMazeGame.cpp
-  EnchantedRoom.cpp
-  Main.cpp
-  Maze.cpp
-  MazeBuilder.cpp
-  MazeFactory.cpp
-  MazeGame.cpp
-  MazePrototypeFactory.cpp
-  Room.cpp
-  RoomWithABomb.cpp
-  StandardMazeBuilder.cpp
-  Wall.cpp
-  Generating Code...
-  CreationalPatternsMaze.vcxproj -> C:\Users\EricT\Desktop\Files\Repositories\CS372\Labs\Lab2\CreationalPatternsMaze-master\Debug\CreationalPatternsMaze.exe
+﻿  MazeGame.cpp
+  CreationalPatternsMaze.vcxproj -> C:\Users\EricT\Desktop\Lab2\CreationalPatternsMaze-master\Debug\CreationalPatternsMaze.exe

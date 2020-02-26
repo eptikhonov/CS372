@@ -1,11 +1,15 @@
 #include "stdafx.h"
 #include "MazeGame.h"
+#include "TrappedMazeFactory.h"
 #include "Maze.h"
 #include "Room.h"
 #include "Door.h"
 #include "Wall.h"
 #include "MazeFactory.h"
 #include "MazeBuilder.h"
+#include <iostream>
+
+using namespace std;
 
 MazeGame::MazeGame()
 {
@@ -14,6 +18,58 @@ MazeGame::MazeGame()
 
 MazeGame::~MazeGame()
 {
+}
+
+Maze* MazeGame::CreateMazeUsingTraps()
+{
+    TrappedMazeFactory factory;
+    Maze* aMaze = factory.MakeMaze();
+
+    int trappedRooms = 1;
+    int totalRooms = 0;
+
+    // create 1 thousand rooms
+    for (int i = 0; i < 500; i++) {
+        // rooms without a trap
+        Room* r1 = new Room(i + 1);
+        Room* r2 = new Room(500 + i);
+
+        totalRooms += 2;
+        int randNum = rand();
+
+        if (randNum % 100 <= 10) { // 10% of the time
+            r1 = factory.MakeRoom(i+1); // room with trap
+            trappedRooms++;
+        }
+        else if (randNum % 100 >= 11 && randNum % 100 <= 20) { // 10% of the time
+            r2 = factory.MakeRoom(i+1); // room with trap
+            trappedRooms++;
+        }
+        else {
+
+        }
+
+        Door* aDoor = factory.MakeDoor(r1, r2);
+
+        r1->SetSide(North, factory.MakeWall());
+        r1->SetSide(East, aDoor);
+        r1->SetSide(South, factory.MakeWall());
+        r1->SetSide(West, factory.MakeWall());
+
+        r2->SetSide(North, factory.MakeWall());
+        r2->SetSide(East, factory.MakeWall());
+        r2->SetSide(South, factory.MakeWall());
+        r2->SetSide(West, aDoor);
+
+        aMaze->AddRoom(r1);
+        aMaze->AddRoom(r2);
+    }
+
+    cout << "The trapped maze has "
+        << totalRooms << " total rooms with "
+        << trappedRooms << " trapped rooms" << endl;
+
+    return aMaze;
 }
 
 Maze* MazeGame::CreateMaze()
